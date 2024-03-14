@@ -1,0 +1,16 @@
+Time complexities
+
+O(1) - Best (Constant time)
+O(log n) - Good (Logarithic time)
+O(n) - Fair (Linear time)
+O(n log n) - Bad
+O(n^2) - Very Bad (Quadratic time)
+O(2^n) - Horrible (Exponential time) (Eg. Recursive fibnonacci series)
+O(n!) - Worst (Factorial time)
+
+O(1) > O(log n) > O(n) > O(n log n) > O(n^2) > O(2^n) > O(n!)
+
+When input size decreases on each iteration -> logarithmic time complexity
+
+n! > 2^n > n^2 
+[(factorial) > (expenential) > (quadratic)]
