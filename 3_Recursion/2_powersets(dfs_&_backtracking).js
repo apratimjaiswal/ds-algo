@@ -3,6 +3,8 @@
  * Power Set P(S) of a set S is the set of all subsets of S.
  * If S has n elements then its P(S) will have 2^n elements.
  *
+ * Powersets of "abc": ['abc', 'ab', 'ac', 'a', 'bc', 'b', 'c', '']
+ *
  * Since all possible subsets, this will be a recursive solution to find all potential solutions.
  * [RECURSIVE BACKTRACKING] [DEPTH FIRST SEARCH - Backtracking recursive function]
  *
@@ -15,40 +17,46 @@
  * Since this is a DEPTH FIRST SEARCH, our base case will be when we reach a LEAD NODE
  */
 
-// Method #1: DFS Solution
-function powerSet_DFS(str, depth, subset, result) {
-  // Base condition: Reach a 'Leaf node'
-  if (depth == str.length) {
-    result.push(subset);
-    return;
-  }
-  powerSet_DFS(str, depth + 1, subset + str[depth], result);
-  powerSet_DFS(str, depth + 1, subset, result);
-  return result;
-}
+// Method #1: DFS
+const powerset_dfs = (str) => {
+  let result = [];
 
-let str = "abc";
-let result = [];
-powerSet_DFS(str, 0, "", result);
-console.log("PowerSets are: ", result, "Length of PowerSets:", result.length);
+  const dfs = (subset, depth) => {
+    if (depth == str.length) {
+      result.push(subset);
+      return;
+    }
+    dfs(subset + str[depth], depth + 1);
+    dfs(subset, depth + 1);
+  };
 
-// Method #1: RECURSIVE BACKTRACK Solution
+  dfs("", 0);
+  console.log("Result (dfs): ", result);
+};
+
+const str = "abc";
+powerset_dfs(str);
+
+// Method #2: RECURSIVE BACKTRACK
 // Recursive Backtracking is a Depth-First-Search on a "decision tree"
+const powerset_backtrack = (a) => {
+  let result = [];
 
-function PowerSets_RecursiveBacktrack(a, depth, subset, result) {
-  // Base condition: Leaf node
-  if (depth == a.length) {
-    result.push([...subset]);
-    return;
-  }
-  subset.push(a[depth]); // Include the item
-  PowerSets_RecursiveBacktrack(a, depth + 1, subset, result); // Backtrack
-  subset.pop(); // Not include the item
-  PowerSets_RecursiveBacktrack(a, depth + 1, subset, result); // Backtrack
+  const backtrack = (subset, depth) => {
+    if (depth == a.length) {
+      result.push([...subset]);
+      return;
+    }
 
-  return result;
-}
-let a = [1, 2, 3];
-let result1 = [];
-PowerSets_RecursiveBacktrack(a, 0, [], result1);
-console.log("Powersets are (Using backtracking) are: ", result1);
+    subset.push(a[depth]); // include item
+    backtrack(subset, depth + 1); // backtrack
+    subset.pop(); // not include item
+    backtrack(subset, depth + 1); // backtrack
+  };
+
+  backtrack([], 0);
+  console.log("Result (backtracking): ", result);
+};
+
+const a = [1, 2, 3];
+powerset_backtrack(a);
