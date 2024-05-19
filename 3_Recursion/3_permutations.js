@@ -1,5 +1,7 @@
 /**
- * All possible "Permutations"
+ * All possible "Permutations" (order matters)
+ * Permutations of "ABC": ["ABC", "ACB", "BAC", "BCA", "CAB", "CBA"]
+ *
  * [RECURSIVE BACKTRACKING]
  */
 // "Array" subset
