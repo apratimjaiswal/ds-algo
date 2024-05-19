@@ -7,7 +7,7 @@ let rotatedArray = [6, 7, 8, 1, 2, 3, 4, 5];
 
 function findPivot(arr) {
   let low = 0;
-  let high = arr.length;
+  let high = arr.length - 1;
   let mid = 0;
 
   while (low <= high) {
@@ -22,8 +22,8 @@ function findPivot(arr) {
       return;
     }
 
-    if (arr[mid] < arr[low]) high = mid;
-    else low = mid;
+    if (arr[mid] < arr[low]) high = mid - 1;
+    else low = mid + 1;
   }
   console.log("Pivot NOT found");
 }
