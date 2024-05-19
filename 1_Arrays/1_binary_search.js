@@ -40,9 +40,9 @@ function binarySearch(arr, x) {
       return;
     }
 
-    if (x > arr[mid]) low = mid;
-    else high = mid;
+    if (x > arr[mid]) low = mid + 1; // #TODO: IMP
+    else high = mid - 1; // #TODO: IMP
   }
-  console.log("Binary search - Not found");
+  console.log(`Binary search - Number ${x} not found`);
 }
 binarySearch(arr, 2);
