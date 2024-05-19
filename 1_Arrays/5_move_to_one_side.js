@@ -4,20 +4,21 @@
  * [POINTER TECHNIQUE]
  * Time O(n) & Space O(1)
  */
-function moveToLeftSide(a) {
-  let zeroCounter = a.length - 1;
+function moveZerosToLeft(a) {
+  let write = a.length - 1;
 
-  for (let i = a.length - 1; i >= 0; i--) {
-    if (a[i] !== 0 && i < zeroCounter) {
-      let temp = a[i];
-      a[i] = a[zeroCounter];
-      a[zeroCounter] = temp;
+  for (let read = a.length - 1; read >= 0; read--) {
+    if (a[read] !== 0) {
+      // if non-zero, then swap 'read' & 'write'
+      let temp = a[read];
+      a[read] = a[write];
+      a[write] = temp;
 
-      zeroCounter--;
+      write--; // decrement write
     }
   }
-  console.log(a);
+  console.log("Result: ", a);
 }
 
-let a = [2, 4, 0, 1, 0, 6, 0];
-moveToLeftSide(a);
+moveZerosToLeft([2, 4, 0, 1, 0, 6, 0, 9, 0]);
+moveZerosToLeft([2, 4, 0, 1, 0, 6, 0]);
