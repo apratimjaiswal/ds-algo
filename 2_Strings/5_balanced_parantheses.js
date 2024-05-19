@@ -16,7 +16,6 @@ function check(a) {
       }
     }
   }
-
   if (stack.length == 0) console.log("Balanced");
   else console.log("Not balanced");
 }
